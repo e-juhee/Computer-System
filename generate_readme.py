@@ -1,14 +1,15 @@
 import os
 import re
+import urllib.parse
 
 def extract_number(filename):
-    """Extract numbers from filenames for sorting."""
+    """Extract numbers from filenames for sorting, including float numbers."""
     match = re.search(r"(\d+\.\d+|\d+)", filename)
     return float(match.group(1)) if match else float('inf')
 
 def generate_markdown_link(path, base_url):
-    """Generate GitHub markdown link for a given file path."""
-    readable_path = path.replace(' ', '%20').replace('./', '')
+    """Generate GitHub markdown link for a given file path, encoding URLs to handle special characters."""
+    readable_path = urllib.parse.quote(path.replace('./', ''), safe="/")
     return f"[{os.path.basename(path)}]({base_url}{readable_path})"
 
 def list_files(directory, base_url, prefix=""):
@@ -24,7 +25,7 @@ def list_files(directory, base_url, prefix=""):
 
         full_path = os.path.join(directory, item)
         if os.path.isdir(full_path):
-            markdown_content += f"{prefix}- {item}\n"  # Remove the slash for directories
+            markdown_content += f"{prefix}- {item}\n"
             markdown_content += list_files(full_path, base_url, prefix + "    ")
         else:
             markdown_content += f"{prefix}- {generate_markdown_link(full_path, base_url)}\n"
@@ -54,5 +55,4 @@ end_marker = "<!-- FOLDER_STRUCTURE_END -->"
 
 # Generate folder structure and update README.md
 folder_structure = list_files(directory_path, base_url)
-print(folder_structure)
 update_readme_section(readme_path, folder_structure, start_marker, end_marker)
