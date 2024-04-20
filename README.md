@@ -8,3 +8,8 @@
 
 - 20240415
     - 1일 1페이지 시작!
+
+
+<!-- FOLDER_STRUCTURE_START -->
+
+<!-- FOLDER_STRUCTURE_END -->
