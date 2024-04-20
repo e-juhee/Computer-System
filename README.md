@@ -11,5 +11,7 @@
 
 
 <!-- FOLDER_STRUCTURE_START -->
+- 1. 프로그래밍 언어부터 프로그램 실행까지, 이렇게 진행된다
+    - [01) 여러분이 프로그래밍 언어를 발명한다면?.md](https://github.com/e-juhee/Computer-System/blob/main/1.%20프로그래밍%20언어부터%20프로그램%20실행까지,%20이렇게%20진행된다/01)%20여러분이%20프로그래밍%20언어를%20발명한다면?.md)
 
 <!-- FOLDER_STRUCTURE_END -->
